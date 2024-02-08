@@ -1,3 +1,4 @@
 {
-    "mongoURI":"mongodb+srv://Blade:Blade69@bladecluster.93kuisj.mongodb.net/DevConnector?retryWrites=true&w=majority"
+    "mongoURI":"mongodb+srv://Blade:Blade69@bladecluster.93kuisj.mongodb.net/DevConnector?retryWrites=true&w=majority",
+    "jwrSecret":"nottodayhackers"
 }
