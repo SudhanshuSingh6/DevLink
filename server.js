@@ -5,7 +5,7 @@ const connectDB = require("./config/db");
 connectDB();
 
 //Init Middleware
-app.use(express.json);
+app.use(express.json());
 
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
