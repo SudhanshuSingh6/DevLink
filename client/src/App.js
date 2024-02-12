@@ -6,10 +6,19 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Alert from "./components/layout/Alert";
+//redux
 import { Provider } from "react-redux";
 import store from "./store";
+import setAuthToken from "./utils/setAuthToken";
+import { loadUser } from "./actions/auth";
 
-const App = () => (
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+const App = () => {
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
   <Provider store={store}>
     <Router>
       <Navbar />
@@ -20,7 +29,7 @@ const App = () => (
         <Route path="/login" element={<Login />}></Route>
       </Routes>
     </Router>
-  </Provider>
-);
+  </Provider>;
+};
 
 export default App;

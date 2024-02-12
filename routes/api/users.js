@@ -7,10 +7,10 @@ const config = require("config");
 const { check, validationResult } = require("express-validator");
 
 const User = require("../../models/User");
-router.get(
+router.post(
   "/",
   [
-    check("name", "Name is required").not().isEmpty(),
+    check("name", "Name is required").notEmpty(),
     check("email", "Please include a valid email").isEmail(),
     check(
       "password",
@@ -35,7 +35,7 @@ router.get(
         r: "pg",
         d: "mm",
       });
-      User = new User({
+      user = new User({
         name,
         email,
         password,
@@ -63,7 +63,6 @@ router.get(
       console.error(err.message);
       res.status(500).send("Server Error");
     }
-    res.send("Users route");
   }
 );
 module.exports = router;
