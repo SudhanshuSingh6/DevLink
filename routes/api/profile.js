@@ -4,8 +4,8 @@ const config = require("config");
 const router = express.Router();
 const auth = require("../../middleware/auth");
 const { check, validationResult } = require("express-validator");
-const normalize = require("url");
-const checkObjectId = require("../../middleware/checkObjectID");
+const normalize = require("normalize-url");
+const checkObjectID = require("../../middleware/checkObjectID");
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 const Post = require("../../models/Post");
@@ -85,10 +85,9 @@ router.get("/", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
 router.get(
   "/user/:user_id",
-  checkObjectId("user_id"),
+  checkObjectID("user_id"),
   async ({ params: { user_id } }, res) => {
     try {
       const profile = await Profile.findOne({
@@ -203,7 +202,7 @@ router.get("/github/:username", async (req, res) => {
     );
     const headers = {
       "user-agent": "node.js",
-      Authorization: `token ${config.get("githubToken")}`,
+      GH_TOKEN: `${config.get("githubToken")}`,
     };
     const gitHubResponse = await axios.get(uri, { headers });
     return res.json(gitHubResponse.data);

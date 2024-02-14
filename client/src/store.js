@@ -15,7 +15,6 @@ const store = createStore(
 );
 
 let currentState = store.getState();
-
 store.subscribe(() => {
   let previousState = currentState;
   currentState = store.getState();
