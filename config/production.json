@@ -1,6 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://Blade:Blade69@bladecluster.93kuisj.mongodb.net/DevConnector?retryWrites=true&w=majority",
-    "jwtSecret": "nottodayhackers",
-    "githubToken": "983b4753f77571c3a2c07b0ef7f2bbc0f2368777"
-  }
-  
